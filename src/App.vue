@@ -1,19 +1,35 @@
-<template>
+<template lang="html">
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <h1>Articles</h1>
+   <articles-list></articles-list>
+   <list-component></list-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import ArticlesList from './components/articles-list'
+import ListComponent from './components/listComponent'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+    name: 'App',
+  data(){
+    return {
+    results: []
   }
-}
+  },
+  components: {
+    "articles-list": ArticlesList,
+    "list-component": ListComponent
+  },
+
+  mounted(){
+    const searchTerm = "Edinburgh"
+  fetch(`https://content.guardianapis.com/search?q=${searchTerm}s&format=json&api-key=test`)
+  .then(response => response.json())
+  .then(results => this.results = results)
+}}
+
 </script>
 
 <style>
