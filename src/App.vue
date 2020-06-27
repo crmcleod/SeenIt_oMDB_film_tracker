@@ -8,6 +8,7 @@
      </form>
    <film-list :films="films"></film-list>
     <film-detail :film="selectedFilm"></film-detail>
+    <!-- <input type="checkbox" v-on:change.prevent="addToSeen" value="Click to add to seen">click me</button> -->
 
 
   </div>
@@ -24,19 +25,35 @@ export default {
   data(){
     return {
     films: [],
-    selectedFilm: null,
+    seenFilms: [],
+    selectedFilm: [],
     searchTerm: ""
   }
   },
   methods: {
     fetchFilms() {
-      let url = "https://www.omdbapi.com/?s="
-      let apiKey = "&apikey=62df8c06"
+      const url = "https://www.omdbapi.com/?"
+      // below line must be s= or t=
+      let search = "s="
+      const apiKey = "&apikey=62df8c06"
       let searchTerm = this.searchTerm
-      fetch(url+searchTerm+apiKey)
-      .then(res => res.json())
+      fetch(url+search+searchTerm+apiKey)
+      .then(result => result.json())
       .then(films =>this.films = films.Search)
-    }
+    },
+
+    addToSeen: function(){
+      this.seenFilms.push(this.selectedFilm)
+    },
+    // fetchFilm() {
+    //   const url = "https://www.omdbapi.com/?"
+    //   let Title = "t="
+    //   const apiKey ="&apikey=62df8c06"
+    //   let searchTerm = this.searchTerm
+    //   fetch(url+Title+searchTerm+apiKey)
+    //   .then(res => res.json())
+    //   .then(films =>this.selectedFilm = film)
+    // }
     
   },
   components: {
@@ -48,6 +65,10 @@ export default {
 // film search ?s
   mounted(){
     this.fetchFilms()
+
+    this.addToSeen()
+
+    // this.fetchFilm()
   
   // fetch(`http://www.omdbapi.com/?t=${searchTerm}&apikey=62df8c06`)
   // .then(response =>response.json())
@@ -61,13 +82,6 @@ export default {
   })
   })}
 
-
-// film by title ?t
-  // mounted(){
-  //   const selectedFilm = "Blade"
-  // fetch(`http://www.omdbapi.com/?t=${selectedFilm}&apikey=62df8c06`)
-  // .then(response =>response.json())
-  // .then(film=> this.film)}
 }
 
 </script>

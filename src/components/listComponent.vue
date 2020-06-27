@@ -22,6 +22,7 @@ export default {
 
 <style lang="css" scoped>
 li{
+    
     justify-content: center;
     display:flex;
     vertical-align: middle;
