@@ -1,34 +1,46 @@
 <template lang="html">
   <div id="app">
-   <h1>Articles</h1>
-   <articles-list></articles-list>
-   <list-component></list-component>
+   <h1>Films</h1>
+   <film-list :films="films"></film-list>
+   <!-- <list-component></list-component> -->
+    </div>
+
   </div>
 </template>
 
 <script>
-
-import ArticlesList from './components/articles-list'
+import { eventBus } from './main'
+import FilmList from './components/filmList'
 import ListComponent from './components/listComponent'
 
 export default {
     name: 'App',
   data(){
     return {
-    results: []
+    films: [],
+    selectedFilms: null
   }
   },
   components: {
-    "articles-list": ArticlesList,
+    "film-list": FilmList,
     "list-component": ListComponent
   },
 
+// film search ?s
   mounted(){
-    const searchTerm = "Edinburgh"
-  fetch(`https://content.guardianapis.com/search?q=${searchTerm}s&format=json&api-key=test`)
+    const searchTerm = "blade"
+  fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=62df8c06`)
   .then(response => response.json())
-  .then(results => this.results = results)
-}}
+  .then(films => this.films = films.Search)}
+
+
+// film by title ?t
+  // mounted(){
+  //   const selectedFilm = "Blade"
+  // fetch(`http://www.omdbapi.com/?t=${selectedFilm}&apikey=62df8c06`)
+  // .then(response =>response.json())
+  // .then(film=> this.film)}
+}
 
 </script>
 
