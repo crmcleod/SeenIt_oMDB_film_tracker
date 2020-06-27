@@ -1,5 +1,5 @@
 <template lang="html">
-   <li>{{film.Title}}</li>
+   <h2 v-on:click="handleClick">{{film.Title}}</h2>
     <!-- <img :src="article.webUrl.img"> -->
 </template>
 
@@ -7,7 +7,12 @@
 import { eventBus } from '../main'
 export default {
     name: 'list-component',
-    props: ['film']
+    props: ['film'],
+    methods: {
+        handleClick(){
+            eventBus.$emit('film-selected', this.film)
+        }
+    }
 
 }
 </script>
