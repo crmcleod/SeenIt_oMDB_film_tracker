@@ -20,25 +20,19 @@ export default {
 </script>
 
 <style>
+#seenFilmList {
+    position: relative;
+    left: 100px;
+    top: 0px;
+}
 #seenFilmList ul{
+    background-image: url('../../public/seen.png');
+    background-size: cover;
     list-style: none;
     display: flex;
-    /* overflow-y: hidden; */
     overflow-y: scroll;
     height: 300px;
-    width: 1000px;
-    /* position: absolute; */
-    background-position-x: left;
-    background-position-y: top;
+    width: 600px;
     white-space: nowrap;
-
 }
-/* ul {margin
-    position: absolute;
-    background-position-x: left;
-    background-position-y: top;
-    overflow-x: auto;
-    /* display: flex; */
-    /* flex-direction: row; */
-/* } */
 </style>

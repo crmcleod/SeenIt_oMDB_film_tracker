@@ -1,18 +1,12 @@
 <template lang="html">
   <div id="app">
-    <header>
-      </header>
-   <h1>Films</h1>
+   <h1>Seen it?</h1>
    <form v-on:submit.prevent>
-   <!-- <label for id="search">Search for film: -->
-     <input type="text" v-model="searchTerm" v-on:keyup="fetchFilms">
-     <!-- </label> -->
+     <input type="text" v-model="searchTerm" v-on:keyup="fetchFilms" placeholder="search for films here...">
      </form>
    <film-list :films="films"></film-list>
     <film-detail :film="selectedFilmAllDetails"></film-detail>
     <seen-list :films="seenFilms"></seen-list>
-
-    <!-- <input type="checkbox" v-on:change.prevent="addToSeen" value="Click to add to seen">click me</button> -->
 
 
   </div>
@@ -32,7 +26,7 @@ export default {
     return {
     films: [],
     seenFilms: [],
-    selectedFilm: null,
+    selectedFilm: {},
     searchTerm: "",
     selectedFilmAllDetails: null
   }
@@ -40,7 +34,7 @@ export default {
   methods: {
     fetchFilms() {
       const url = "https://www.omdbapi.com/?"
-      // below line must be s= or t=
+    // s= returns an array of up to 10 objects
       let search = "s="
       const apiKey = "&apikey=62df8c06"
       let searchTerm = this.searchTerm
@@ -75,7 +69,6 @@ export default {
   mounted(){
     this.fetchFilms()
     this.fetchFilm()
-    // this.addToSeen()
 
 
     eventBus.$on('film-selected', (film) => {
@@ -96,16 +89,25 @@ export default {
 </script>
 
 <style>
+
+h1{
+  text-align: left;
+  margin: 0px;
+  margin-left: 24.5%;
+}
+input[type=text]{
+  position: relative;
+  left: -19.5%;
+  transform: scale(1.5);
+  margin: 10px;
+}
 body {
 @import url(https://fonts.googleapis.com/css?family=Amatic+SC:regular,700);
-background-color: rgba(0, 0, 0, 0.226);
+background-color: rgb(108, 128, 154);
   font-family: "Amatic SC";
   font-size: xx-large;
-  /* -webkit-font-smoothing: antialiased; */
-  /* -moz-osx-font-smoothing: grayscale; */
   text-align: center;
   color: #2c3e50;
-  /* margin-top: 60px; */
 }
 li {
   cursor: pointer;

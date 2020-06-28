@@ -16,16 +16,13 @@ export default {
     components: {
         "list-component": ListComponent
     }
-    // props: ['']
-        // }
-    // }
 
 }
 </script>
 
 <style>
 #filmList ul{
-    height: 600px;
+    height: 360px;
     overflow-y: scroll;
     width: 60%;
     margin: 0%;
@@ -34,6 +31,5 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
-    /* background-color: rgba(255, 237, 180, 0.5); */
 }
 </style>
