@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style>
-ul{ 
+#filmList ul{
     height: 600px;
     overflow-y: scroll;
     width: 60%;
