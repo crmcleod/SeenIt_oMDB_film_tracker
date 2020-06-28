@@ -1,8 +1,14 @@
 <template lang="html">
-   <li v-on:click="handleClick">{{film.Title}}
+   <li v-on:mouseover="handleMouseOver" >
+       {{film.Title}}<br>
+
        {{film.Type}}<br>
-       {{film.Year}}
+       {{film.Year}}<br>
+        <input type="checkbox" v-on:change.self="handleChange" value="Click to add to seen">Seen it!</button>
+       
    </li>
+        <!-- <input type="checkbox" v-on:change.prevent="addToSeen" value="Click to add to seen">Seen it!</button> -->
+
     <!-- <img :src="article.webUrl.img"> -->
 </template>
 
@@ -12,9 +18,13 @@ export default {
     name: 'list-component',
     props: ['film'],
     methods: {
-        handleClick(){
+        handleMouseOver(){
             eventBus.$emit('film-selected', this.film)
+        },
+        handleChange(){
+            eventBus.$emit('film-seen', this.film)
         }
+    
     }
 
 }

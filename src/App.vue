@@ -8,6 +8,7 @@
      </form>
    <film-list :films="films"></film-list>
     <film-detail :film="selectedFilm"></film-detail>
+
     <!-- <input type="checkbox" v-on:change.prevent="addToSeen" value="Click to add to seen">click me</button> -->
 
 
@@ -26,7 +27,7 @@ export default {
     return {
     films: [],
     seenFilms: [],
-    selectedFilm: [],
+    selectedFilm: null,
     searchTerm: ""
   }
   },
@@ -42,8 +43,8 @@ export default {
       .then(films =>this.films = films.Search)
     },
 
-    addToSeen: function(){
-      this.seenFilms.push(this.selectedFilm)
+    addToSeen: function(film) {
+      this.seenFilms.push(film)
     },
     // fetchFilm() {
     //   const url = "https://www.omdbapi.com/?"
@@ -62,34 +63,30 @@ export default {
     "film-detail": FilmDetail
   },
 
-// film search ?s
   mounted(){
     this.fetchFilms()
+    // this.addToSeen()
 
-    this.addToSeen()
 
-    // this.fetchFilm()
+    eventBus.$on('film-selected', (film) => {
+      this.selectedFilm = film}),
+
+    eventBus.$on('search-term', (search) => {
+      this.searchTerm = search}),
+
+    eventBus.$on('film-seen', (film) => {
+      this.addToSeen(film)})
   
-  // fetch(`http://www.omdbapi.com/?t=${searchTerm}&apikey=62df8c06`)
-  // .then(response =>response.json())
-  // .then(film=> this.selectedFilm = film)
 
-  eventBus.$on('film-selected', (film) => {
-    this.selectedFilm = film
-
-  eventBus.$on('search-term', (search) => {
-    this.searchTerm = search
-  })
-  })}
-
+  }
 }
 
 </script>
 
 <style>
-#app {
+body {
 @import url(https://fonts.googleapis.com/css?family=Amatic+SC:regular,700);
-background-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0.226);
   font-family: "Amatic SC";
   font-size: xx-large;
   /* -webkit-font-smoothing: antialiased; */

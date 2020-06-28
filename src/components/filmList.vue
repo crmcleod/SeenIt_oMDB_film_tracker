@@ -8,6 +8,8 @@
 
 <script>
 import ListComponent from './listComponent'
+import { eventBus } from '../main'
+
 export default {
     name: "film-list",
     props: ['films'],
