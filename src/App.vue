@@ -28,7 +28,8 @@ export default {
     films: [],
     seenFilms: [],
     selectedFilm: null,
-    searchTerm: ""
+    searchTerm: "",
+    selecteFilmAllDetails: null
   }
   },
   methods: {
@@ -46,15 +47,15 @@ export default {
     addToSeen: function(film) {
       this.seenFilms.push(film)
     },
-    // fetchFilm() {
-    //   const url = "https://www.omdbapi.com/?"
-    //   let Title = "t="
-    //   const apiKey ="&apikey=62df8c06"
-    //   let searchTerm = this.searchTerm
-    //   fetch(url+Title+searchTerm+apiKey)
-    //   .then(res => res.json())
-    //   .then(films =>this.selectedFilm = film)
-    // }
+    fetchFilm() {
+      const url = "https://www.omdbapi.com/?"
+      let Title = "t="
+      const apiKey ="&apikey=62df8c06"
+      let filmName = this.selectedFilm
+      fetch(url+Title+filmName+apiKey)
+      .then(res => res.json())
+      .then(film =>this.selecteFilmAllDetails = film)
+    },
     
   },
   components: {
@@ -65,17 +66,19 @@ export default {
 
   mounted(){
     this.fetchFilms()
+    this.fetchFilm()
     // this.addToSeen()
 
 
     eventBus.$on('film-selected', (film) => {
-      this.selectedFilm = film}),
+      this.selectedFilm = film.Title}),
 
     eventBus.$on('search-term', (search) => {
       this.searchTerm = search}),
 
     eventBus.$on('film-seen', (film) => {
-      this.addToSeen(film)})
+      this.addToSeen(film)
+      this.fetchFilm()})
   
 
   }

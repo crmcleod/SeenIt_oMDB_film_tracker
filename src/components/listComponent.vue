@@ -37,7 +37,7 @@ li{
     display:flex;
     vertical-align: middle;
     width: 5rem;
-    height: auto;
+    /* height: auto; */
     background-color: rgba(69, 123, 157, 1) ;
     margin: 1%;
     padding: 10%;
