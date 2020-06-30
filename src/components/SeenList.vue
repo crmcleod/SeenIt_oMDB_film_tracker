@@ -1,7 +1,7 @@
 <template>
     <div id="seenFilmList">
         <ul>
-            <seen-list-items v-for="(film, index) in films" :film="film" :key="index"></seen-list-items>
+            <seen-list-items id="seenList" v-for="(film, index) in films" :film="film" :key="index"></seen-list-items>
         </ul>
     </div>
 </template>
@@ -20,6 +20,13 @@ export default {
 </script>
 
 <style>
+
+
+#seenList:hover{
+    transition: 0.5s;
+    transform:translateY(-4rem);
+
+}
 #seenFilmList {
     position: relative;
     left: 100px;
@@ -31,7 +38,8 @@ export default {
     list-style: none;
     display: flex;
     overflow-y: scroll;
-    height: 300px;
+    overflow-y: hidden;
+    height: 400px;
     width: 600px;
     white-space: nowrap;
 }

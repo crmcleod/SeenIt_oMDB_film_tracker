@@ -6,7 +6,7 @@
      </form>
    <film-list :films="films"></film-list>
     <film-detail :film="selectedFilmAllDetails"></film-detail>
-    <seen-list :films="seenFilms"></seen-list>
+    <seen-list :films="seenFilmsFiltered"></seen-list>
 
 
   </div>
@@ -31,6 +31,11 @@ export default {
     selectedFilmAllDetails: null
   }
   },
+  computed: {
+    seenFilmsFiltered: function() {
+    return this.seenFilms.filter((v, i, a) => a.indexOf(v)===i)
+  }
+  },
   methods: {
     fetchFilms() {
       const url = "https://www.omdbapi.com/?"
@@ -48,6 +53,7 @@ export default {
     },
     fetchFilm() {
       const url = "https://www.omdbapi.com/?"
+      // returns just the best match film
       let Title = "t="
       const apiKey ="&apikey=62df8c06"
       let filmName = this.selectedFilm

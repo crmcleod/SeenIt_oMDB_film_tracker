@@ -31,11 +31,14 @@ height: 100px;
     border: 0px;
     align-content: center;
     height: 270px;
-    background-color: rgba(248, 248, 255, 0.342);
+    background-color: rgba(248, 248, 255, 0.568);
     width: 200px;
     word-break: keep-all;
-    margin: 0.5rem;}
-
+    margin: 0.5rem;
+    border: 1px;
+    border-color: seagreen;
+    margin-top: 50%;
+}
 img{
     height: 9rem;
     width: 6rem;
