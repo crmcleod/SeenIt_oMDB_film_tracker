@@ -40,7 +40,7 @@ export default {
     overflow-y: scroll;
     overflow-y: hidden;
     height: 400px;
-    width: 600px;
+    width: 800px;
     white-space: nowrap;
 }
 </style>
