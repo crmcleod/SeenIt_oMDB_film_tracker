@@ -1,4 +1,4 @@
-# restaurants
+# oMDB
 
 ## Project setup
 ```
