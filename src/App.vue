@@ -47,7 +47,6 @@ export default {
       .then(result => result.json())
       .then(films =>this.films = films.Search)
     },
-
     addToSeen: function(film) {
       this.seenFilms.push(film)
     },

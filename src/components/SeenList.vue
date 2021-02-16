@@ -29,18 +29,20 @@ export default {
 }
 #seenFilmList {
     position: relative;
-    left: 100px;
+    margin-right: none;
+    padding-left: 5vw;
     top: 0px;
 }
 #seenFilmList ul{
     background-image: url('../../public/seen.png');
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
     list-style: none;
     display: flex;
     overflow-y: scroll;
     overflow-y: hidden;
     height: 400px;
-    width: 800px;
-    white-space: nowrap;
+    width: 45vw;
 }
 </style>

@@ -3,10 +3,8 @@
        <h3>{{film.Title}}</h3>
        <h4>Media type: {{film.Type}}</h4>
        <h4>Year of release: {{film.Year}}</h4>
-       <label for="seenItBox">Watched it/Played it!
+       <label for="seenItBox">Watched it/Played it!</label>
        <p><input id="seenItBox" type="checkbox" v-on:change.self="handleChange" value="Click to add to seen"></button></p>
-       </label>
-       
    </li>
 </template>
 
@@ -47,7 +45,7 @@ li{
     width:  15rem;
     background-color: rgba(99, 38, 74, 0.384) ;
     margin: 0.8%;
-    padding: 4%;
+    padding: 2rem;
     color: rgb(255, 255, 255);
     cursor: pointer;
     list-style: none;
