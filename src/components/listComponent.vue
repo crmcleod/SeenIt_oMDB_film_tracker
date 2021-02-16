@@ -4,7 +4,8 @@
        <h4>Media type: {{film.Type}}</h4>
        <h4>Year of release: {{film.Year}}</h4>
        <label for="seenItBox">Watched it/Played it!</label>
-       <p><input id="seenItBox" type="checkbox" v-on:change.self="handleChange" value="Click to add to seen"></button></p>
+       <br></br>
+       <input id="seenItBox" type="checkbox" v-on:change.self="handleChange" value="Click to add to seen"></button>
    </li>
 </template>
 
@@ -29,23 +30,22 @@ export default {
 <style lang="css" scoped>
 input[type=checkbox]{
     transform: scale(3);
-    opacity: 50%;
+    opacity: 0.5;
+    position: relative;
+    margin-top: 2vw;
     
 }
 h3{
     line-height: 10mm;
 }
 li{
+    min-height: 300px;
     line-height: 3mm;
     font-size: smaller;
-
-    justify-content: center;
-    display:flexbox;
-    vertical-align: middle;
     width:  15rem;
     background-color: rgba(99, 38, 74, 0.384) ;
     margin: 0.8%;
-    padding: 2rem;
+    padding: 2vw;
     color: rgb(255, 255, 255);
     cursor: pointer;
     list-style: none;
