@@ -106,10 +106,11 @@ input[type=text]{
   transform: scale(1.5);
   margin: 10px;
 }
-body {
 @import url(https://fonts.googleapis.com/css?family=Amatic+SC:regular,700);
+
+body {
 background-color: rgb(108, 128, 154);
-  font-family: "Amatic SC";
+  font-family: 'Amatic SC', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: xx-large;
   text-align: center;
   color: #2c3e50;
